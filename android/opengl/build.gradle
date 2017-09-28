@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        applicationId "edu.hawhamburg.cg"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 600
+        versionName "6.0"
+        jackOptions {
+            enabled true
+        }
+    }
+
+    archivesBaseName = rootProject.projectDir.getName()
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            ndk {
+                abiFilters "armeabi-v7a"
+                abiFilters "x86"
+            }
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            ndk {
+                abiFilters "armeabi-v7a"
+                abiFilters "x86"
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            assets.srcDirs = ['../assets']
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs '../libs'
+    }
+}
+
+dependencies {
+    compile project(':shared')
+}
