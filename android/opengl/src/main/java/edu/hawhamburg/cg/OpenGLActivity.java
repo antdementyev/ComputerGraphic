@@ -10,7 +10,7 @@
  * parts of the framework nor the complete framework may be used outside of research or student
  * projects at the UAS Hamburg.
  */
-package edu.hawhamburg.pjenke;
+package edu.hawhamburg.cg;
 
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;

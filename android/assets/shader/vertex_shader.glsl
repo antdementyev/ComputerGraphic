@@ -18,7 +18,7 @@ uniform mat4 projectionMatrix;
 void main(void)
 {
     mat4 viewModelMatrix = viewMatrix * modelMatrix;
-	vec4 p4 = modelMatrix * vec4(inVertex.x, inVertex.y, inVertex.z, 1) ;
+	vec4 p4 = modelMatrix * vec4(inVertex.x, inVertex.y, inVertex.z, 1) ; 
 	p4 = p4 / p4.w;
     p  = p4.xyz;
     N = normalize((viewModelMatrix * vec4( inNormal.x, inNormal.y, inNormal.z, 0.0)).xyz);

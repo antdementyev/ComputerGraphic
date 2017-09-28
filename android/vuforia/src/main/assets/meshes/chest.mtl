@@ -1,4 +1,0 @@
-# Material file with a single texture
-newmtl chest
-Kd 0.8 0.8 0.8
-map_Kd box.jpg

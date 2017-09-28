@@ -68,7 +68,7 @@ public class DefaultARCoreScene extends ARCoreScene {
     public void anchorCreated(ARCoreAnchorNode anchorNode) {
         if (node != null) {
             anchorNode.addChild(node);
-            Vector lightPos = anchorNode.getPosition().add(new Vector(0, 1, 0));
+            Vector lightPos = anchorNode.getPosition().add(new Vector(0, 1, 0, 0));
             getRoot().setLightPosition(lightPos);
         }
     }

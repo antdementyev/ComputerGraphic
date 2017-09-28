@@ -11,6 +11,7 @@ android {
         jni.srcDirs = []
         jniLibs.srcDir "$VUFORIA_SDK_DIR/$NATIVE_LIB_DIR/"
         assets.srcDirs = ['../assets']
+        res.srcDirs = ['../res']
     }
 
     defaultConfig {

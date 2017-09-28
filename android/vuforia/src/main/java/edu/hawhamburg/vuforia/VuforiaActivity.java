@@ -68,7 +68,7 @@ import platform.vuforia.VuforiaRenderer;
  * Central activity to use Vuforia in the framework.
  */
 public class VuforiaActivity extends Activity implements SessionControllable {
-    Session vuforiaAppSession;
+    private Session vuforiaAppSession;
     private DataSet mCurrentDataset;
     private int mCurrentDatasetSelectionIndex = 0;
     private ArrayList<String> mDatasetStrings = new ArrayList<String>();

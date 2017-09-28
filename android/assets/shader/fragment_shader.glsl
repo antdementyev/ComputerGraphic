@@ -22,15 +22,16 @@ void main (void)
     float diffuseReflection = 0.8;
     float specularReflection = 1.0 - diffuseReflection;
 
-	vec3 surfaceColor = color.xyz;
+	vec4 surfaceColor = color;
 	if ( shaderMode == 0 ){
 		// Phong shading
-		surfaceColor = color.xyz;
+		surfaceColor = color;
+		gl_FragColor = vec4(0, 0, 0, surfaceColor.a);
 	}
 	if (shaderMode == 1 ){
 		// Texture, no lighting
-		gl_FragColor.rgba = texture2D(texture, texture_coordinate);
-		return;
+		surfaceColor = texture2D(texture, texture_coordinate);
+		gl_FragColor = vec4(0, 0, 0, surfaceColor.a);
 	}
 	if (shaderMode == 2 ){
 		// No lighting
@@ -49,7 +50,7 @@ void main (void)
     lightPositions[0] = lightPosition;
 
    	// Ambient color
-    gl_FragColor.xyz += color.xyz * ambientReflection;
+    gl_FragColor.xyz += surfaceColor.xyz * ambientReflection;
 
     // Add diffuse and specular for each light
     for ( int i = 0; i < numberOfLights; i++ ){
@@ -62,7 +63,7 @@ void main (void)
         vec3 specular = vec3(0,0,0);
 
         if ( dot( N, L ) > 0.0 ){
-            diffuse = color.xyz * clamp( dot( N, L ), 0.0, 1.0 ) * diffuseReflection;
+            diffuse = surfaceColor.xyz * clamp( dot( N, L ), 0.0, 1.0 ) * diffuseReflection;
 
             // Specular
             vec3 E = normalize( camera_position - p );
