@@ -1,0 +1,10 @@
+- Android Studio installieren (https://developer.android.com/studio/index.html, beinhaltet Android SDK)
+- Git installieren (https://git-for-windows.github.io/)
+- Oracle Java installieren (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- Repository clonen: git clone https://gitlab.informatik.haw-hamburg.de/wp_cg/wpcgar.git
+- Android Studio starten
+- Import z:/cg/android
+- Setzen der Build-Tools -> Android Monitor -> Version 26.0.1
+- Klasse VuforiaKey.java anlegen und befüllen
+- Gradle Build
+- Device freigeben, - auf dem Android-Gerät: USB-Debugging zulassen/aktivieren
