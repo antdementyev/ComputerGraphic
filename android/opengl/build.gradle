@@ -22,34 +22,14 @@ android {
         }
     }
 
-    archivesBaseName = rootProject.projectDir.getName()
-
-    //buildTypes {
-    //    release {
-    //        minifyEnabled false
-    //       ndk {
-    //           abiFilters "armeabi-v7a"
-    //           abiFilters "x86"
-    //       }
-    //   }
-    //   debug {
-    //       minifyEnabled false
-    //       debuggable true
-    //       ndk {
-    //           abiFilters "armeabi-v7a"
-    //           abiFilters "x86"
-    //       }
-    //   }
-    //}
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-
 }
 
 repositories {
+    mavenCentral()
     flatDir {
         dirs '../libs'
     }

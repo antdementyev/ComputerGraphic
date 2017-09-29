@@ -4,9 +4,16 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
 
+    sourceSets {
+        main {
+            assets.srcDirs = ['../assets']
+            res.srcDirs = ['../res']
+        }
+    }
+
     defaultConfig {
         applicationId 'edu.hawhamburg.arcore'
-        minSdkVersion 24
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -22,23 +29,16 @@ android {
             abortOnError false
         }
     }
-
-    sourceSets {
-        main {
-            assets.srcDirs = ['../assets']
-            res.srcDirs = ['../res']
-        }
-    }
 }
 
 repositories {
+    mavenCentral()
     flatDir {
         dirs '../libs'
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support:design:26.+'
     compile project(':shared')
+    compile 'com.android.support:design:26.+'
 }
