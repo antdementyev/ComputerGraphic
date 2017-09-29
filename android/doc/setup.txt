@@ -1,6 +1,7 @@
 - Android Studio installieren (https://developer.android.com/studio/index.html, beinhaltet Android SDK)
 - Git installieren (https://git-for-windows.github.io/)
 - Oracle Java installieren (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- Mitgliedschaft bei clone https://gitlab.informatik.haw-hamburg.de/wp_cg/wpcgar.git anfordern (-> Jenke)
 - Repository clonen: git clone https://gitlab.informatik.haw-hamburg.de/wp_cg/wpcgar.git
 - Android Studio starten
 - Import z:/cg/android
