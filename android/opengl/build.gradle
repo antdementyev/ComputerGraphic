@@ -4,12 +4,19 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
 
+    sourceSets {
+        main {
+            assets.srcDirs = ['../assets']
+            res.srcDirs = ['../res']
+        }
+    }
+
     defaultConfig {
         applicationId "edu.hawhamburg.cg"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 600
-        versionName "6.0"
+        versionCode 1
+        versionName "1.0"
         jackOptions {
             enabled true
         }
@@ -17,34 +24,29 @@ android {
 
     archivesBaseName = rootProject.projectDir.getName()
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            ndk {
-                abiFilters "armeabi-v7a"
-                abiFilters "x86"
-            }
-        }
-        debug {
-            minifyEnabled false
-            debuggable true
-            ndk {
-                abiFilters "armeabi-v7a"
-                abiFilters "x86"
-            }
-        }
-    }
+    //buildTypes {
+    //    release {
+    //        minifyEnabled false
+    //       ndk {
+    //           abiFilters "armeabi-v7a"
+    //           abiFilters "x86"
+    //       }
+    //   }
+    //   debug {
+    //       minifyEnabled false
+    //       debuggable true
+    //       ndk {
+    //           abiFilters "armeabi-v7a"
+    //           abiFilters "x86"
+    //       }
+    //   }
+    //}
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    sourceSets {
-        main {
-            assets.srcDirs = ['../assets']
-            res.srcDirs = ['../res']
-        }
-    }
+
 }
 
 repositories {
