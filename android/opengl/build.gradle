@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
 
     sourceSets {
         main {
@@ -17,11 +17,14 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
+        // Android Studio 2.3.3
         jackOptions {
             enabled true
         }
     }
 
+    // Android Studio 2.3.3
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

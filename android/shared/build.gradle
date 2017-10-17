@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 19
@@ -10,13 +10,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+        // Required for Android Studio 3 RC1 - can be removed later?
+        multiDexEnabled true
     }
 }
 
@@ -29,14 +25,13 @@ repositories {
 
 dependencies {
     compile fileTree(dir: '../libs', include: ['*.jar'])
+    // Required to avoid merge-dex error
+    //implementation ("org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version") {
+    //    exclude group: 'org.jetbrains', module: 'annotations'
+    //}
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'gov.nist.math:jama:1.0.3'
-    compile(name: 'arcore_client', ext: 'aar')
-    compile(name: 'obj-0.2.1', ext: 'jar')
-    compile(name: 'Vuforia', ext: 'jar')
 
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    compile(name: 'Vuforia', ext: 'jar')
     testCompile 'junit:junit:4.12'
 }
