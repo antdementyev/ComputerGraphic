@@ -1,10 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    // Android Studio 2.3.3
     ext.kotlin_version = '1.1.51'
-
-    // Android Studio 3
-    //ext.kotlin_version = '1.1.51'
 
     repositories {
         jcenter()
@@ -13,10 +9,10 @@ buildscript {
 
     dependencies {
         // Android Studio 2.3.3
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        //classpath 'com.android.tools.build:gradle:2.3.3'
 
         // Android Studio 3
-        //classpath 'com.android.tools.build:gradle:3.0.0-beta7'
+        classpath 'com.android.tools.build:gradle:3.0.0-rc1'
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
@@ -30,7 +26,4 @@ allprojects {
         jcenter()
         google()
     }
-}
-
-dependencies {
 }

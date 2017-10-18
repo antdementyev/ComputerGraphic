@@ -1,9 +1,6 @@
 <resources>
-    <string name="app_name_vuforia">WP AR: Vuforia</string>
-    <string name="app_name_opengl">WP AR: OpenGL</string>
-    <string name="app_name_arcore">WP AR: ARCore</string>
-    <string name="app_name_pjenke">WP AR: PJenke</string>
-    <string name="app_name_shared">WP AR: Shared</string>
+    <string name="app_name_app">WP AR</string>
+    <string name="app_name_app_pjenke">WP AR - Private</string>
     <string name="app_description">WP Computergrafik für Augmented Reality</string>
 
     <string name="action_settings">Settings</string>

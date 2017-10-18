@@ -16,11 +16,21 @@
 
 In diesem Dokument werden die grundsŠtzlichen FunktionalitŠten des Frameworks beschrieben. Das Framework besteht aus vier Modulen:
 \begin{itemize}
-\item \textbf{shared:} gemeinsamer Code fŸr alle anderen Module
-\item \textbf{opengl:} Testmodul, um OpenGL-basierte Apps zu entwickeln. Kein AR-Support.
-\item \textbf{vuforia:} UnterstŸtzung der Vuforia-FunktionalitŠt. In diesem Modul werden die Aufgaben fŸr das Praktikum umgesetzt.
-\item \textbf{arcore:} experimentelles Modul zur UnterstŸtzung der Google-ARCore-Technologie\footnote{https://developers.google.com/ar/}.
+\item \textbf{lib\_shared:} gemeinsamer Code fŸr alle anderen Module
+\item \textbf{lib\_arcore:} experimentelles Modul zur UnterstŸtzung der Google-ARCore-Technologie\footnote{https://developers.google.com/ar/}.
+\item \textbf{lib\_vuforia:} UnterstŸtzung der Vuforia-FunktionalitŠt, insbesonders das Marker-Tracking
+\item \textbf{app:} eigentliche App mit Einstiegs-Activities fŸr OpenGL, Vuforia und ArCore 
 \end{itemize}
+
+Die Module haben die folgenden AbhŠngigkeiten:
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.6\linewidth]{images/module.png}
+\caption{AbhŠngigkeiten der Module im Framework.}
+\end{figure}
+
+Die App startet immer mit einer der Activities \emph{OpenGLActivity}, \emph{VuforiaActivity} oder \emph{ARCoreActivity}. Die verwendete Activity wird in der Manifest-Datei \emph{AndroidManifest.xml} des Moduls \emph{app} gesetzt (Feld \emph{android:name}).
 
 Eine App hat immer die folgende Stuktur:
 
@@ -148,5 +158,12 @@ oder einen Lambda-Ausdruck erfolgen:
 () -> Log.i(Constants.LOGTAG, 
   "Button 1 pressed!")
 \end{verbatim}
+
+\section{[tmp] Unterschiede Android Studio 2.3 und AndroidStudio 3}
+
+\begin{itemize}
+\item In allen build.gradle-Dateien muss bei Version 2.3 der Bezeichner \emph{compile} verwendet werden, bei Version 3 wird \emph{implementation} verwendet. Anstelle von \emph{testCompile} with \emph{testImplementation} verwendet.
+\item In der build.gradle im Wurzelverzeichnis \emph{android} muss der passende Classpath verwendet werden (der jeweils andere wird auskommentiert).
+\end{itemize}
 
 \end{document}
