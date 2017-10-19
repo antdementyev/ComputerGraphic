@@ -20,7 +20,7 @@ before_script:
   - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
-  - chmod +x ./gradlew
+  - chmod +x ./android/gradlew
 
 stages:
   - build
@@ -29,15 +29,15 @@ stages:
 build:
   stage: build
   script:
-    - ./gradlew assembleDebug
+    - ./android/gradlew assembleDebug
   artifacts:
     paths:
-    - app/build/outputs/
+    - android/app/build/outputs/
 
 unitTests:
   stage: test
   script:
-    - ./gradlew test
+    - ./android/gradlew test
 
 functionalTests:
   stage: test
@@ -47,6 +47,6 @@ functionalTests:
     - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter sys-img-x86-google_apis-${ANDROID_COMPILE_SDK}
     - echo no | android-sdk-linux/tools/android create avd -n test -t android-${ANDROID_COMPILE_SDK} --abi google_apis/x86
     - android-sdk-linux/tools/emulator64-x86 -avd test -no-window -no-audio &
-    - ./android-wait-for-emulator
+    - ./android/android-wait-for-emulator
     - adb shell input keyevent 82
-    - ./gradlew cAT
+    - ./android/gradlew cAT
