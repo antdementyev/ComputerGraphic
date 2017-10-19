@@ -1,0 +1,3 @@
+[submodule "android/app_pjenke"]
+	path = android/app_pjenke
+	url = https://gitlab.informatik.haw-hamburg.de/vr_ar_lab/app_pjenke.git
