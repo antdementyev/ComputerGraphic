@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '26.0.1'
 
     defaultConfig {
         minSdkVersion 19
@@ -20,8 +20,15 @@ repositories {
 }
 
 dependencies {
-    implementation project(':lib_shared')
-    implementation 'com.android.support:design:26.+'
-    implementation(name: 'arcore_client', ext: 'aar')
-    implementation(name: 'obj-0.2.1', ext: 'jar')
+    // AndroidStudio 2.3
+    compile project(':lib_shared')
+    compile 'com.android.support:design:26.+'
+    compile(name: 'arcore_client', ext: 'aar')
+    compile(name: 'obj-0.2.1', ext: 'jar')
+
+    // AndroidStudio 3
+    //implementation project(':lib_shared')
+    //implementation 'com.android.support:design:26.+'
+    //implementation(name: 'arcore_client', ext: 'aar')
+    //implementation(name: 'obj-0.2.1', ext: 'jar')
 }

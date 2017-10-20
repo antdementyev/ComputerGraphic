@@ -10,10 +10,12 @@
  * parts of the framework nor the complete framework may be used outside of research or student
  * projects at the UAS Hamburg.
  */
-package edu.hawhamburg.arcore;
+package edu.hawhamburg.app.arcore;
 
 import java.util.List;
 
+import edu.hawhamburg.arcore.ARCoreAnchorNode;
+import edu.hawhamburg.arcore.ARCoreScene;
 import edu.hawhamburg.shared.datastructures.mesh.ITriangleMesh;
 import edu.hawhamburg.shared.datastructures.mesh.ObjReader;
 import edu.hawhamburg.shared.math.Vector;

@@ -16,7 +16,7 @@
  * || Vuforia is a trademark of PTC Inc., registered in the United States and other
  * || countries.
  */
-package edu.hawhamburg.app.activities;
+package edu.hawhamburg.app.vuforia;
 
 import android.Manifest;
 import android.app.Activity;
@@ -55,7 +55,6 @@ import edu.hawhamburg.shared.misc.Scene;
 import edu.hawhamburg.shared.rendering.GLView;
 import edu.hawhamburg.shared.rendering.NoInteractionController;
 import edu.hawhamburg.shared.rendering.TextureManager;
-import edu.hawhamburg.vuforia.DefaultVuforiaScene;
 import edu.hawhamburg.vuforia.Session;
 import edu.hawhamburg.vuforia.SessionControllable;
 import edu.hawhamburg.vuforia.Texture;

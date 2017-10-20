@@ -26,7 +26,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.hawhamburg.app.activities;
+package edu.hawhamburg.app.arcore;
 
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
@@ -59,7 +59,6 @@ import edu.hawhamburg.app.R;
 import edu.hawhamburg.arcore.ARCoreAnchorNode;
 import edu.hawhamburg.arcore.ARCoreScene;
 import edu.hawhamburg.arcore.CameraPermissionHelper;
-import edu.hawhamburg.arcore.DefaultARCoreScene;
 import edu.hawhamburg.arcore.rendering.BackgroundRenderer;
 import edu.hawhamburg.arcore.rendering.ObjectRenderer;
 import edu.hawhamburg.arcore.rendering.ObjectRenderer.BlendMode;

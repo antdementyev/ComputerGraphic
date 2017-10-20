@@ -10,7 +10,7 @@
  * parts of the framework nor the complete framework may be used outside of research or student
  * projects at the UAS Hamburg.
  */
-package edu.hawhamburg.shared.misc;
+package edu.hawhamburg.app.opengl;
 
 import android.util.Log;
 
@@ -18,7 +18,13 @@ import java.util.List;
 
 import edu.hawhamburg.shared.datastructures.mesh.ITriangleMesh;
 import edu.hawhamburg.shared.datastructures.mesh.ObjReader;
+import edu.hawhamburg.shared.datastructures.mesh.TriangleMesh;
+import edu.hawhamburg.shared.datastructures.mesh.TriangleMeshFactory;
 import edu.hawhamburg.shared.datastructures.mesh.TriangleMeshTools;
+import edu.hawhamburg.shared.misc.Button;
+import edu.hawhamburg.shared.misc.ButtonHandler;
+import edu.hawhamburg.shared.misc.Constants;
+import edu.hawhamburg.shared.misc.Scene;
 import edu.hawhamburg.shared.scenegraph.INode;
 import edu.hawhamburg.shared.scenegraph.InnerNode;
 import edu.hawhamburg.shared.scenegraph.ScaleNode;
@@ -29,10 +35,10 @@ import edu.hawhamburg.shared.scenegraph.TriangleMeshNode;
  *
  * @author Philipp Jenke
  */
-public class DefaultScene extends Scene {
+public class DefaultOpenGLScene extends Scene {
 
 
-    public DefaultScene() {
+    public DefaultOpenGLScene() {
         super(100, INode.RenderMode.REGULAR);
     }
 
@@ -49,16 +55,10 @@ public class DefaultScene extends Scene {
         //addButton(button);
 
 
-        // Airplane
-        ScaleNode objectNode = new ScaleNode(1);
-        ObjReader reader = new ObjReader();
-        List<ITriangleMesh> meshes = reader.read("meshes/plane.obj");
-        TriangleMeshTools.fitToUnitBox(meshes);
-        TriangleMeshTools.placeOnXZPlane(meshes);
-        for (ITriangleMesh mesh : meshes) {
-            objectNode.addChild(new TriangleMeshNode(mesh));
-        }
-        rootNode.addChild(objectNode);
+        ITriangleMesh mesh = new TriangleMesh();
+        TriangleMeshFactory.createSphere(mesh, 0.3, 7);
+        TriangleMeshNode node = new TriangleMeshNode(mesh);
+        rootNode.addChild(node);
     }
 
     @Override

@@ -12,33 +12,16 @@
 
 \maketitle
 
-\section{Einführung}
+In diesem Dokument werden die grundsätzlichen Funktionalitäten des Frameworks beschrieben. 
 
-In diesem Dokument werden die grundsätzlichen Funktionalitäten des Frameworks beschrieben. Das Framework besteht aus vier Modulen:
+\section{Quick Start}
+
 \begin{itemize}
-\item \textbf{lib\_shared:} gemeinsamer Code für alle anderen Module
-\item \textbf{lib\_arcore:} experimentelles Modul zur Unterstützung der Google-ARCore-Technologie\footnote{https://developers.google.com/ar/}.
-\item \textbf{lib\_vuforia:} Unterstützung der Vuforia-Funktionalität, insbesonders das Marker-Tracking
-\item \textbf{app:} eigentliche App mit Einstiegs-Activities für OpenGL, Vuforia und ArCore 
+\item Auswählen der Activitiy: Modul \emph{app} $\rightarrow$ \emph{AndroidManifest.xml} $\rightarrow$ Tag \emph{android:name} setzen (entweder \emph{.opengl.OpenGLActivity} oder \emph{.vuforia.VuforiaActivity}
+\item Auswählen der Szene: Im Konstruktor der Activity (OpenGL oder Vuforia), Setzen der Instanzvariablen \verb+scene+.
+\item Aufbau des Szenengraphen: Einfügen der verwendeten Knoten der  Methode \verb+onSetup+ der Szene.
+\item Kompilieren und Starten
 \end{itemize}
-
-Die Module haben die folgenden Abhängigkeiten:
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.6\linewidth]{images/module.png}
-\caption{Abhängigkeiten der Module im Framework.}
-\end{figure}
-
-Die App startet immer mit einer der Activities \emph{OpenGLActivity}, \emph{VuforiaActivity} oder \emph{ARCoreActivity}. Die verwendete Activity wird in der Manifest-Datei \emph{AndroidManifest.xml} des Moduls \emph{app} gesetzt (Feld \emph{android:name}).
-
-Eine App hat immer die folgende Stuktur:
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.7\linewidth]{images/ueberblick.png}
-\caption{Grundsätzlicher Aufbau einer App im Framework.}
-\end{figure}
 
 \section{Einrichtung}
 
@@ -49,6 +32,37 @@ Das Framework kann von einem privaten Git-Repository mit der URL (\emph{https://
 \item Framework aus dem Git-Repository klonen
 \item Android-Projekt in Android-Studio als Projekt öffnen
 \end{itemize}
+
+
+\section{Einführung}
+
+Das Framework besteht aus vier Modulen:
+\begin{itemize}
+\item \textbf{lib\_shared:} gemeinsamer Code für alle anderen Module
+\item \textbf{lib\_arcore:} experimentelles Modul zur Unterstützung der Google-ARCore-Technologie\footnote{https://developers.google.com/ar/}.
+\item \textbf{lib\_vuforia:} Unterstützung der Vuforia-Funktionalität, insbesonders das Marker-Tracking
+\item \textbf{app:} eigentliche App mit Einstiegs-Activities für OpenGL, Vuforia und ArCore 
+\end{itemize}
+
+Die Abhängigkeiten zwischen den Modulen sind in Abbildung \ref{fig:module} dargestellt.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.6\linewidth]{images/module.png}
+\caption{Abhängigkeiten der Module im Framework.}
+\label{fig:module}
+\end{figure}
+
+Die App startet immer mit einer der Activities \emph{OpenGLActivity}, \emph{VuforiaActivity} oder \emph{ARCoreActivity}. Die verwendete Activity wird in der Manifest-Datei \emph{AndroidManifest.xml} des Moduls \emph{app} gesetzt (Feld \emph{android:name}).
+
+Eine App hat immer die Stuktur in Abbildung \ref{fig:app_struktur}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\linewidth]{images/ueberblick.png}
+\caption{Grundsätzlicher Aufbau einer App im Framework.}
+\label{fig:app_struktur}
+\end{figure}
 
 \section{Projekte}
 
@@ -63,14 +77,14 @@ Die Activities werden bei der Umsetzung eines neuen Projektes (beispielsweise be
 
 \begin{verbatim}
 // Application specific scene
-scene = new DefaultScene();
+scene = new DefaultOpenGLScene();
 \end{verbatim}        
 
 Bei der Implementierung einer eigenen Szenen-Klasse müssen insbesondere die folgende Methoden überschrieben werden:
 \begin{itemize}
-\item \verb+setup()+: In dieser Methode baut man den Szenengraph auf.
-\item \verb+timerTick+: In der Szene kann man einen Timer konfigurieren. Bei jedem Timeout des Timers wird diese Methode aufgerufen.
-\item \verb+onSceneRedraw();()+: Diese Methode wird immer dann aufgerufen, wenn der Bildinhalt von OpenGL ES neu gezeichnet wird.
+\item \verb+onSetup()+: In dieser Methode baut man den Szenengraph auf.
+\item \verb+onTimerTick()+: In der Szene kann man einen Timer konfigurieren. Bei jedem Timeout des Timers wird diese Methode aufgerufen.
+\item \verb+onSceneRedraw()+: Diese Methode wird immer dann aufgerufen, wenn der Bildinhalt von OpenGL ES neu gezeichnet wird.
 \end{itemize}
 
 \section{Vuforia}
@@ -164,7 +178,6 @@ oder einen Lambda-Ausdruck erfolgen:
 \begin{itemize}
 \item In allen build.gradle-Dateien muss bei Version 2.3 der Bezeichner \emph{compile} verwendet werden, bei Version 3 wird \emph{implementation} verwendet. Anstelle von \emph{testCompile} with \emph{testImplementation} verwendet.
 \item In der build.gradle im Wurzelverzeichnis \emph{android} muss der passende Classpath verwendet werden (der jeweils andere wird auskommentiert).
-\item In der \emph{build.gradle} des Moduls \emph{app} müssen die Zeilen zur Java8-Kompatibilität in der Version 2.3 einkommentiert werden.
 \end{itemize}
 
 \end{document}

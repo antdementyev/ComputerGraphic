@@ -10,7 +10,7 @@
  * parts of the framework nor the complete framework may be used outside of research or student
  * projects at the UAS Hamburg.
  */
-package edu.hawhamburg.app.activities;
+package edu.hawhamburg.app.opengl;
 
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -19,7 +19,6 @@ import android.view.View;
 
 import edu.hawhamburg.app.R;
 import edu.hawhamburg.shared.misc.AssetPath;
-import edu.hawhamburg.shared.misc.DefaultScene;
 import edu.hawhamburg.shared.misc.Scene;
 import edu.hawhamburg.shared.rendering.GLView;
 import edu.hawhamburg.shared.rendering.ObserverInteractionController;
@@ -48,7 +47,7 @@ public class OpenGLActivity extends Activity {
         AssetPath.getInstance().init(getAssets());
 
         // Application specific scene - must be set exactly here
-        scene = new DefaultScene();
+        scene = new DefaultOpenGLScene();
         //scene = new LandscapeScene();
         //scene = new BallThrowScene();
 

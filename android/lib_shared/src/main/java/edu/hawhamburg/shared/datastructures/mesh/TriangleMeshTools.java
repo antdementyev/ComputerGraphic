@@ -2,6 +2,7 @@ package edu.hawhamburg.shared.datastructures.mesh;
 
 import android.util.Log;
 
+import java.util.Arrays;
 import java.util.List;
 
 import edu.hawhamburg.shared.math.Vector;
@@ -107,6 +108,13 @@ public class TriangleMeshTools {
         }
 
         return mesh;
+    }
+
+    /**
+     * The minimum y-value is 0.
+     */
+    public static void placeOnXZPlane(ITriangleMesh mesh) {
+        placeOnXZPlane(Arrays.asList(mesh));
     }
 
     /**

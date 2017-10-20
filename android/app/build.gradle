@@ -1,9 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '26.0.1'
 
     sourceSets {
         main {
@@ -13,23 +12,12 @@ android {
     }
 
     defaultConfig {
-        applicationId "edu.hawhamburg.pjenke"
+        applicationId "edu.hawhamburg.app"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-
-        // Android Studio 2.3
-        //jackOptions {
-            //enabled true
-        //}
     }
-
-    // Android Studio 2.3
-    //compileOptions {
-        //sourceCompatibility JavaVersion.VERSION_1_8
-        //targetCompatibility JavaVersion.VERSION_1_8
-    //}
 }
 
 repositories {
@@ -40,14 +28,21 @@ repositories {
 }
 
 dependencies {
-    implementation project(':lib_shared')
-    implementation project(':lib_arcore')
-    implementation project(':lib_vuforia')
-    implementation 'com.android.support:design:26.+'
-    implementation(name: 'Vuforia', ext: 'jar')
-    implementation(name: 'arcore_client', ext: 'aar')
-    implementation(name: 'obj-0.2.1', ext: 'jar')
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version") {
-        exclude group: 'org.jetbrains', module: 'annotations'
-    }
+    // AndroidStudio 2.3
+    compile project(':lib_shared')
+    compile project(':lib_arcore')
+    compile project(':lib_vuforia')
+    compile 'com.android.support:design:26.+'
+    compile(name: 'Vuforia', ext: 'jar')
+    compile(name: 'arcore_client', ext: 'aar')
+    compile(name: 'obj-0.2.1', ext: 'jar')
+
+    // AndroidStudio 3
+    //implementation project(':lib_shared')
+    //implementation project(':lib_arcore')
+    //implementation project(':lib_vuforia')
+    //implementation 'com.android.support:design:26.+'
+    //implementation(name: 'Vuforia', ext: 'jar')
+    //implementation(name: 'arcore_client', ext: 'aar')
+    //implementation(name: 'obj-0.2.1', ext: 'jar')
 }
