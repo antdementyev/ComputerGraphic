@@ -180,4 +180,19 @@ oder einen Lambda-Ausdruck erfolgen:
 \item In der build.gradle im Wurzelverzeichnis \emph{android} muss der passende Classpath verwendet werden (der jeweils andere wird auskommentiert).
 \end{itemize}
 
+\section{Framework in eigenes Git-Repo}
+
+Dieser Abschnitt beschreibt, wie das Framework in ein eigenes Git-Repository überführt werden kann.
+
+\begin{itemize}
+\item Repository anlegen (z.B. auf dem Informatik-Gitlab): liefert $<$repo-url$>$
+\item Kommandozeile (oder GitBash) im Wurzelverzeichnis des lokalen Repositories öffnen.
+\item \emph{git remote add $<$repo-name$>$ $<$repo-url$>$} (Beispiel: \emph{git remote add gitlab https://gitlab.informatik.haw-hamburg.de/abc007/wp\_cg\_ar.git})
+\item \emph{git push $<$repo-name$>$ master} (Beispiel: \emph{git push gitlab master})
+\end{itemize}
+
+Fertig!
+
+Zum Überblick außerdem nützlich: \emph{git remote -v} listet alle konfigurierten Repositories auf und \emph{git remote rm $<$repo-name$>$} entfernt die Verbindung zum Remote-Repository $<$repo-name$>$.
+
 \end{document}
