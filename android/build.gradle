@@ -4,7 +4,9 @@ buildscript {
 
     repositories {
         jcenter()
-        google()
+
+        //AndroidStudio 3
+        //google()
     }
 
     dependencies {
@@ -22,6 +24,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        google()
+
+
+        // AndroidStudio 3
+        // google()
     }
 }
