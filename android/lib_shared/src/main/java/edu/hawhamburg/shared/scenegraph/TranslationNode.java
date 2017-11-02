@@ -50,4 +50,7 @@ public class TranslationNode extends InnerNode {
                 );
     }
 
+    public Matrix getTranslation() {
+        return translation;
+    }
 }
