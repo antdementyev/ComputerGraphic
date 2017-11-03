@@ -81,23 +81,28 @@ public class DefaultVuforiaScene extends Scene {
 
     @Override
     public void onSceneRedraw() {
+        Matrix inverseObserverTransformation = observerMarkerNode.getTransformation()
+                .getInverse();
+
         // start point of view direction
-        Matrix observerTranslation = observerTranslationNode.getTranslation();
-        Vector observerPositionInObserverSystem = new Vector(-
+        Matrix observerTranslation = inverseObserverTransformation
+                .multiply(observerTranslationNode.getTransformation());
+        Vector observerPositionInObserverSystem = new Vector(
                 observerTranslation.get(0, 3),
                 observerTranslation.get(1, 3),
                 observerTranslation.get(2, 3),
                 1);
 
         // end point of view direction
-        Matrix targetTranslation = targetTranslationNode.getTranslation();
+        Matrix targetTranslation = targetMarkerNode.getTransformation()
+                .getInverse()
+                .multiply(targetTranslationNode.getTransformation());
         Vector targetPositionInTargetSystem = new Vector(
                 targetTranslation.get(0, 3),
                 targetTranslation.get(1, 3),
                 targetTranslation.get(2, 3),
                 1);
-        Vector targetPositionInObserverSystem = observerMarkerNode.getTransformation()
-                .getInverse()
+        Vector targetPositionInObserverSystem = inverseObserverTransformation
                 .multiply(targetMarkerNode.getTransformation())
                 .multiply(targetPositionInTargetSystem);
 

@@ -49,8 +49,4 @@ public class TranslationNode extends InnerNode {
                 getParentNode().getTransformation().multiply(translation
                 );
     }
-
-    public Matrix getTranslation() {
-        return translation;
-    }
 }
