@@ -60,7 +60,7 @@ public class OpenGLActivity extends Activity {
         setContentView(mGlView);
         mGlView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
 
-        TextureManager.getInstance().setup("edu.hawhamburg.pjenke", getApplicationContext());
+        TextureManager.getInstance().setup("edu.hawhamburg.app", getApplicationContext());
         scene.onSetup(scene.getRoot());
     }
 
