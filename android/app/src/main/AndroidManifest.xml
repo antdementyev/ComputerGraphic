@@ -22,7 +22,7 @@
         android:launchMode="singleTask"
         android:theme="@style/SampleAppsTheme">
         <activity
-            android:name=".vuforia.VuforiaActivity"
+            android:name=".opengl.OpenGLActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize"
             android:launchMode="singleTask"
             android:theme="@style/SampleAppsTheme">

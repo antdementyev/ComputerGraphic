@@ -20,6 +20,7 @@ import android.view.View;
 import edu.hawhamburg.app.R;
 import edu.hawhamburg.shared.misc.AssetPath;
 import edu.hawhamburg.shared.misc.Scene;
+import edu.hawhamburg.shared.misc.SkeletonScene;
 import edu.hawhamburg.shared.rendering.GLView;
 import edu.hawhamburg.shared.rendering.ObserverInteractionController;
 import edu.hawhamburg.shared.rendering.OpenGLRenderer;
@@ -47,9 +48,10 @@ public class OpenGLActivity extends Activity {
         AssetPath.getInstance().init(getAssets());
 
         // Application specific scene - must be set exactly here
-        scene = new DefaultOpenGLScene();
+        //scene = new DefaultOpenGLScene();
         //scene = new LandscapeScene();
         //scene = new BallThrowScene();
+        scene = new SkeletonScene();
 
         int depthSize = 16;
         int stencilSize = 8;
