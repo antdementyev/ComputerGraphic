@@ -1,8 +1,5 @@
 package edu.hawhamburg.app.vuforia;
 
-import java.util.Arrays;
-import java.util.List;
-
 import edu.hawhamburg.shared.datastructures.CollisionUtils;
 import edu.hawhamburg.shared.datastructures.mesh.ITriangleMesh;
 import edu.hawhamburg.shared.datastructures.mesh.ObjReader;
@@ -24,12 +21,12 @@ public class CollisionScene extends Scene {
     private final static Vector GREEN = new Vector(0.25, 0.75, 0.25, 1);
     private final static Vector YELLOW = new Vector(1, 1, 0, 1);
     private final static Vector RED = new Vector(1, 0, 0, 1);
+    private final static double SPHERE_RADIUS = 0.3;
 
     private BoundingBoxNode objectBoxNode;
     private ITriangleMesh objectMesh;
 
     private BoundingBoxNode sphereBoxNode;
-    private double sphereRadius;
 
     @Override
     public void onSetup(InnerNode rootNode) {
@@ -43,18 +40,15 @@ public class CollisionScene extends Scene {
 
         // ... sphere
         ITriangleMesh sphereMesh = new TriangleMesh();
-        sphereRadius = 0.3;
-        TriangleMeshFactory.createSphere(sphereMesh, sphereRadius, 100);
+        TriangleMeshFactory.createSphere(sphereMesh, SPHERE_RADIUS, 100);
         TriangleMeshTools.placeOnXZPlane(sphereMesh);
         sphereBoxNode = addObjectWithBoxToRoot(rootNode, sphereMesh, "elphi");
     }
 
     private BoundingBoxNode addObjectWithBoxToRoot(InnerNode rootNode, ITriangleMesh mesh, String markerName) {
-        // node for object
+        // object with box
         TriangleMeshNode meshNode = new TriangleMeshNode(mesh);
-        // ... and its box
-        List<Vector> boxCorners = getBoxCorners(mesh);
-        AxisAlignedBoundingBox box = new AxisAlignedBoundingBox(boxCorners.get(0), boxCorners.get(1));
+        AxisAlignedBoundingBox box = new AxisAlignedBoundingBox(mesh.getBoundingBox());
         BoundingBoxNode boxNode = new BoundingBoxNode(box);
 
         // position in relation to marker
@@ -68,24 +62,6 @@ public class CollisionScene extends Scene {
 
         rootNode.addChild(markerNode);
         return boxNode;
-    }
-
-    private List<Vector> getBoxCorners(ITriangleMesh mesh) {
-        Vector lowerLeftCorner = new Vector(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        Vector upperRightCorner = new Vector(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY);
-
-        for (int i = 0; i < mesh.getNumberOfVertices(); i++) {
-            Vector vertexPosition = mesh.getVertex(i).getPosition();
-            for (int dimension = 0; dimension < 3; dimension++) {
-                double dimensionCoordinate = vertexPosition.get(dimension);
-                lowerLeftCorner.set(dimension,
-                        Math.min(lowerLeftCorner.get(dimension), dimensionCoordinate));
-                upperRightCorner.set(dimension,
-                        Math.max(upperRightCorner.get(dimension), dimensionCoordinate));
-            }
-        }
-
-        return Arrays.asList(lowerLeftCorner, upperRightCorner);
     }
 
     @Override
@@ -111,7 +87,8 @@ public class CollisionScene extends Scene {
         }
 
         // check mesh collision
-        if (CollisionUtils.doesMeshCollideWithSphere(objectMesh, objectTransformation, sphereBox.getCenter(), sphereRadius, sphereTransformation)) {
+        if (CollisionUtils.doesMeshCollideWithSphere(objectMesh, objectTransformation,
+                sphereBox.getCenter(), SPHERE_RADIUS, sphereTransformation)) {
             return RED;
         }
 
